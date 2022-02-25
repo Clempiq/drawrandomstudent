@@ -22,15 +22,14 @@ if ($conn->connect_error) {
   }
 
 
-  $randomname = "SELECT * FROM student WHERE id < 2";
-  $result2 = $conn->query($randomname);
+//   $randomname = "SELECT * FROM student WHERE id < 2";
+//   $result2 = $conn->query($randomname);
 
-  echo($result2);
+//   echo($result2);
 
 
   $addname = "SELECT * FROM student;";
   $result = $conn->query($addname);
- 
 
 
   $conn->close();
@@ -61,7 +60,9 @@ if ($conn->connect_error) {
 
         <button id="draw">Draw</button>
 
-        <div id="drawresult"></div>
+        <div id="drawresult">
+
+        </div>
 
         <div class="title">
             <h1>The crew</h1>
@@ -154,30 +155,22 @@ if ($conn->connect_error) {
     </footer>
 
     <script>
+
         let draw = document.getElementById('draw');
-        let drawresult = document.getElementById('drawresult');
-        let edit = document.getElementbyClassname('edit');
-        let remove = document.getElementByClassname('remove');
-
-
+        let drawresult = document.getElementById('drawresult')
 
         draw.addEventListener('click', function () {
-            drawresult.innerHTML('Clément Piquenet');
+            let myArray = ['Clément Piquenet', 'Jules Grand', 'Loic Chenuet', 'Loic Barbado', 'Nicolas Flichy', 'Mehdi Hueber', 'Jordan Anicet', 'Quentin Malavielle', 'Patrick Rabourdin', 'Daniel Thibaut', 'Kevin Piriou', 'Marc Grondin'];
+            let rand = Math.floor(Math.random() * myArray.length);
+            let rValue = myArray[rand];
+            console.log(rValue);
+
+
+            let newPara = document.createElement('p');
+            newPara.textContent = "L'élève tiré au sort est ";
+            drawresult.appendChild(newPara);
+
         });
-
-
-        // remove.addEventListener('click', function () {
-
-
-        //     <?php
-        //     echo('
-        //         $delete ="DELETE FROM student WHERE firstname = Thomas";
-        //         $deleteok = $conn->query($delete);')
-        //     ?>
-        // });
-
-
-
 
     </script>
 
